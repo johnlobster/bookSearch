@@ -1,0 +1,12 @@
+/* Theme definitions */
+
+
+#root[data-theme="themeA"] {
+  --textColor: black;
+  --bgColor: lightgreen;
+}
+
+#root[data-theme="themeB"] {
+  --textColor: white;
+  --bgColor: darkblue;
+}
