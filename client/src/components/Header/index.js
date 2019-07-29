@@ -1,12 +1,19 @@
 import React from 'react';
 import reactLogo from "../../images/react-logo.svg";
-import "./index.scss";
-
-// this is a placeholder
+import "./index.css";
 
 const changeTheme = (newTheme) => {
+  const allThemes = [
+    "themeA",
+    "themeB"
+  ];
+  if (! allThemes.includes(newTheme)) {
+    console.log("Tried to change to non-existent theme " + newTheme);
+    return;
+  }
   console.log("Changing to theme " + newTheme);
-  document.getElementById("root").setAttribute("data-theme", newTheme);
+  // document.getElementById("root").setAttribute("data-theme", newTheme);
+  document.getElementById("themeSelector").className=newTheme;
 };
 
 class Header extends React.Component {

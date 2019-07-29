@@ -1,0 +1,12 @@
+/* Theme definitions */
+
+
+#themeSelector.themeA {
+  --textColor: black;
+  --bgColor: lightgreen;
+}
+
+#themeSelector.themeB {
+  --textColor: white;
+  --bgColor: darkblue;
+}
