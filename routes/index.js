@@ -24,14 +24,14 @@ router.use(function (req, res) {
 // console.log("Sending index.html to client browser");
 // console.log("NODE_ENV = " + process.env.NODE_ENV);
 // router.use(function (req, res) {
-//   let data = fs.readFileSync(path.join(__dirname, "../client/build/index.html"));
+//   let data = fs.readFileSync(path.join(__dirname, "../client/public/index.html"));
 //   console.log("index.html read");
 //   console.log(data);
 //   console.log("Here");
-//   const newData = data.toString(); 
-//   //   .replace(/<\/noscript>/, `</noscript>\n<script>let NODE_ENV=${process.env.NODE_ENV}</script>\n`);
-//   console.log(newData);
-//   res.send(data);
+//   const newData = data.toString() 
+//     .replace(/<\/noscript>/, `</noscript>\n<script>let NODE_ENV="${process.env.NODE_ENV}"</script>\n`);
+//   // console.log(newData);
+//   res.send(newData);
 // });
 
 module.exports = router;
