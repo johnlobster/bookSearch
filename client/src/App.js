@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar";
 import "./styles/global.css"
 import "./App.css";
 
-// have to access #root element to read style and change
-// attribute to get new style that will alter the css --variables and change theme
+// them is setup by setting class on the enclosing div named themeSelector
+// change the class to whatever theme you want, themes defined in "./styles/global.css"
+
 function App() {
   return (
     <div id="themeSelector" className= "themeA">

@@ -1,8 +1,11 @@
 const express = require("express");
-const routes = require("./routes");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 8080;
 
+// set up NODE_ENV before routes are read
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+console.log("NODE_ENV = " + process.env.NODE_ENV);
+const routes = require("./routes");
 
 // set up database
 if (process.env.NODE_ENV === "test") {
