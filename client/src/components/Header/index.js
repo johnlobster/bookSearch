@@ -1,6 +1,7 @@
 import React from 'react';
 import reactLogo from "../../images/react-logo.svg";
 import "./index.css";
+import Nav from "../Nav";
 
 const changeTheme = (newTheme) => {
   const allThemes = [
@@ -22,16 +23,17 @@ class Header extends React.Component {
     theme : "themeA"
   }
 
-clickHandler = () => {
-  if( this.state.theme === "themeA") {
-    changeTheme("themeB");
-    this.setState( {theme: "themeB"});
+  clickHandler = () => {
+    if( this.state.theme === "themeA") {
+      changeTheme("themeB");
+      this.setState( {theme: "themeB"});
+    }
+    else {
+      changeTheme( "themeA");
+      this.setState( {theme: "themeA"});
+    }
   }
-  else {
-    changeTheme( "themeA");
-    this.setState( {theme: "themeA"});
-  }
-}
+
   render() {
     return(
       <div>
@@ -42,6 +44,7 @@ clickHandler = () => {
           </span>
         </h1>
         <button className="btn btn-danger" onClick={this.clickHandler} >Change theme</button>
+        <Nav change={this.props.changeMode} />
       </div>
     );
   }

@@ -16,7 +16,7 @@ router.use(function (req, res) {
 
 
 // the following code doesn't work in development as create-react-app sets it up so that the
-// client index.html is read independently of the node server
+// client index.html is read independently of the node server. So the route above doesn't do anything ...
 // would work in production, but that's not really where the benefit is
 
 // read html file, set global variables you want to pass into react (NODE_ENV)

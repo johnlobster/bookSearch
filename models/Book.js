@@ -23,7 +23,7 @@ const UserSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-const User = mongoose.model("User", UserSchema);
+const Book = mongoose.model("Book", UserSchema);
 
 // Export the User model
-module.exports = User;
+module.exports = Book;
