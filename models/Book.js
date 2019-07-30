@@ -6,20 +6,11 @@ const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 const UserSchema = new Schema({
-  userName: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  firstName: String,
-  lastName: String,
-  email: String,
-  address: String,
-  dateJoined: Date,
-  ssn: String
+  authors: [String],
+  description: String,
+  image: String,
+  link: String,
+  title: String
 });
 
 // This creates our model from the above schema, using mongoose's model method

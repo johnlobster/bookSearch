@@ -1,26 +1,4 @@
-@import "../../styles/global.scss";
 
-.HeaderHeaderBox {
-  background-color: var(--bgColor);
-  color: var(--textColor);
-  margin-top: 0;
-  padding: 1rem;
-  display:flex;
-  justify-content: space-around;
-  align-content: center;
-}
-
-.HeaderReactLogo {
-  animation: React-logo-spin infinite 10s linear;
-  height: 7vmin;
-  pointer-events: none;
-}
-
-@keyframes React-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ListItemImg {
+  width: 90%;
 }

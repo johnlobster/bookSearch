@@ -40,7 +40,7 @@ app.use(routes);
 
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`🌎 ==> API server listening on port ${PORT}!`);
 });
 
 // export app and db so that they can be used in testing
