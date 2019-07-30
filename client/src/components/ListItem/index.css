@@ -4,6 +4,8 @@
   border-width: 4px;
   border-radius: 10px;
   border-color: darkgrey;
+  padding: 1rem;
+  margin-top: 0.5rem;
 
 }
 .ListItemImg {
@@ -11,14 +13,18 @@
 }
 
 .ListItemSaveButton {
-  background-color: lightblue;
-  color: darkgrey;
-  border-style: solid;
-  border-color: darkgrey;
-  border-width: 4px;
-  border-radius: 10px;
+  background-color: rgb(2, 212, 2);
+  color:black;
+  margin-bottom: 0.25rem;
 }
-
+.ListItemGoogleButton {
+  background-color: rgb(79, 120, 231);
+  color:white; 
+}
+.ListItemDeleteButton {
+  background-color: red;
+  color: black;
+}
 .ListItemDescription {
-  color: green;
+  /* color: green; */
 }

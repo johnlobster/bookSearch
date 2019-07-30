@@ -1,6 +1,10 @@
 import React from 'react';
 import "./index.css";
 
+// ListItem creates a complex set of bootstrap rows and columns to display a
+// book description
+// This is simpler than a table would be and allows for responsive design
+
 class ListItem extends React.Component {
 
   handleSaveButton = () => {
@@ -9,7 +13,7 @@ class ListItem extends React.Component {
 
   render() {
     return (
-        <div className="row ListItemParentRow">
+      <div className="row ListItemParentRow">
         <div className="col-6 col-md-3">
           <img src={this.props.bookData.image} alt="book" className="ListItemImg" />
         </div>
@@ -19,12 +23,13 @@ class ListItem extends React.Component {
               {this.props.bookData.title}
             </div>
             <div className="col-3">
-              <button className="ListItemSaveButton" onClick={this.handleSaveButton}>Save</button>
+              <button className="buttonGlobal ListItemSaveButton" onClick={this.handleSaveButton}>Save</button>
+              <a href={this.props.bookData.link}>
+                <button className="buttonGlobal ListItemGoogleButton" >Google</button>
+              </a>
             </div>
           </div>
-          <div className="row">
-            <a href={this.props.bookData.link}>See on google books</a>
-          </div>
+          
           <div className="row">
             <p>
                 <span>Author(s)</span>

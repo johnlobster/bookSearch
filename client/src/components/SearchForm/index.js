@@ -14,7 +14,7 @@ class SearchForm extends React.Component {
     return (
       <div>
         <h1>Search form</h1>
-        <button className="btn btn-primary SearchFormButton" onClick={this.handleSubmit}>Search</button>
+        <button className="buttonGlobal SearchFormButton" onClick={this.handleSubmit}>Search</button>
       </div>
       
     )
