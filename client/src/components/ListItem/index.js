@@ -9,7 +9,7 @@ class ListItem extends React.Component {
 
   render() {
     return (
-      <div className="row">
+        <div className="row ListItemParentRow">
         <div className="col-6 col-md-3">
           <img src={this.props.bookData.image} alt="book" className="ListItemImg" />
         </div>
@@ -21,6 +21,9 @@ class ListItem extends React.Component {
             <div className="col-3">
               <button className="ListItemSaveButton" onClick={this.handleSaveButton}>Save</button>
             </div>
+          </div>
+          <div className="row">
+            <a href={this.props.bookData.link}>See on google books</a>
           </div>
           <div className="row">
             <p>
