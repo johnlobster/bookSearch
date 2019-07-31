@@ -6,6 +6,28 @@
   margin-bottom: 1rem;
 }
 .SearchFormButton {
+  margin-top: 0.75rem;
   background-color:var(--buttonSearch-bg);
   color: var(--buttonSearch-text);
+}
+
+/* this is an extension of button capability to show a message instead of a button when search
+   is disabled */
+  .SearchFormButton.buttonGlobal:disabled {
+  visibility: hidden ;
+  overflow: visible;
+
+}
+.SearchFormButton.buttonGlobal:disabled::before {
+  font-family: 'Alegreya Sans', sans-serif;
+  content:"Fill in title or author before searching";
+  color:black;
+  visibility: visible;
+  display: block;
+  position: absolute;
+  bottom: -0.5rem;
+  left: -1rem;
+  width: 200%;
+  height: 100%;
+
 }

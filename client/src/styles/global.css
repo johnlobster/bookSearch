@@ -6,6 +6,7 @@
   --bgColor: lightgreen;
   --buttonSearch-bg: blue;
   --buttonSearch-text: white;
+  --bodyBackgroundColor: gray;
 
 }
 
@@ -14,7 +15,17 @@
   --bgColor: darkblue;
   --buttonSearch-bg: lightblue;
   --buttonSearch-text: black;
+  --bodyBackgroundColor: gray;
+
 }
+
+/* set up background */
+#themeSelector {
+  background-color: var(--bodyBackgroundColor);
+}
+/* if we want to make background color part of the theme, then cannot attach it at a
+   point above where the file was imported */
+
 
 /* global button definitions */
 
@@ -29,6 +40,10 @@
   outline: none;
   cursor: default;
 }
+.buttonGlobal::before {
+  visibility: hidden ;
+}
+
 /* Default :focus style has an outline, so remove it */
 .buttonGlobal:focus {
   outline: none;
@@ -52,22 +67,40 @@
 
 }
 /* on hover, grow a little, add box-shadow and brighten background color */
-.buttonGlobal:hover {
+.buttonGlobal:hover:enabled {
   box-shadow: 0.2rem 0.2rem 4px rgb(90, 90, 90);
   filter: brightness(120%);
   transition: scale 0.25s;
   transform: scale(1.04,1.04);
   transform-origin: center;
-  mix-blend-mode: multiply;
 }
 /* darken background color to a little darker what it was, good contrast for ripple */
-.buttonGlobal:hover:active {
+.buttonGlobal:hover:active:enabled {
     filter: brightness(95%);
     transition: filter 0s;
 }
 /* sets the ripple up */
-.buttonGlobal:active::after {
+.buttonGlobal:active::after:enabled {
   transform: scale(0,0);
-  opacity: 0.5;
+  opacity: 0.7;
   transition: 0s;
+}
+
+/* fonts */
+/* set font family in body so everything else inherits it */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Alegreya Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* don't really need this */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+h1,h2,h3,h4.h5.h6 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Lora', serif;
+
 }

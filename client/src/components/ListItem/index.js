@@ -21,7 +21,7 @@ class ListItem extends React.Component {
         <div className="col-12 col-md-9">
           <div className="row">
             <div className="col-9">
-              {this.props.bookData.title}
+              <h4 className="ListItemTitle ml-0">{this.props.bookData.title}</h4>
             </div>
             <div className="col-3">
               {this.props.button === "save"  ? (

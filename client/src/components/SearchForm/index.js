@@ -7,17 +7,28 @@ class SearchForm extends React.Component {
 
   state = {
     title: "",
-    author: ""
+    author: "",
+    searchDisable: true
   }
 
   handleInputChange = event => {
     // Pull the name and value properties off of the event.target (the element which triggered the event)
     const { name, value } = event.target;
 
-    // Set the state for the appropriate input field
-    this.setState({
-      [name]: value
-    });
+    // if change was to remove text in box, then if both fields are empty
+    if ( (value.length === 0) && (this.state.title.length === 0) && (this.state.author.length === 0)) {
+      this.setState({
+        [name]: value,
+        searchDisable: true
+      });
+    }
+    else {
+      this.setState({
+        [name]: value,
+        searchDisable: false
+      });
+    }
+    
   };
 
   // When the form is submitted, prevent the default event and alert the username and password
@@ -30,7 +41,7 @@ class SearchForm extends React.Component {
     else {
       this.props.handleSubmit(this.state.title, this.state.author);
       console.log("SearchForm: submit: title " + this.state.title + " author " + this.state.author);
-      this.setState({ title: "", author: "" });
+      this.setState({ title: "", author: "", searchDisable: true });
 
     }
   }
@@ -66,7 +77,11 @@ class SearchForm extends React.Component {
                     value={this.state.author}
                     onChange={this.handleInputChange}
                   />
-                  <button className="buttonGlobal SearchFormButton" onClick={this.handleFormSubmit}>Search Google books</button>
+                  {/* search button is disabled until have text in title or author inputs */}
+                  <button 
+                    disabled={this.state.searchDisable}
+                    className="buttonGlobal SearchFormButton" 
+                    onClick={this.handleFormSubmit}>Search Google books</button>
                 </div>
               </form>
               

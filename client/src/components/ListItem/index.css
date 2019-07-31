@@ -8,6 +8,9 @@
   margin-top: 0.5rem;
 
 }
+.ListItemTitle {
+  margin-left: 0;
+}
 .ListItemImg {
   width: 90%;
 }

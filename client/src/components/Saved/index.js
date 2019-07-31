@@ -32,7 +32,7 @@ class Saved extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Saved</h1>
         {/* Only render books list if there are books present */}
         {this.state.books.length > 0 &&
