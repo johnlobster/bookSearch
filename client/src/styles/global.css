@@ -1,21 +1,52 @@
 /* Theme definitions */
 
 
+
 #themeSelector.themeA {
   --textColor: black;
   --bgColor: lightgreen;
+  --bodyBackgroundColor: gray;
+  --navButton-bg: darkblue;
+  --navButton-text: white;
+  --themeButton-bg: black;
+  --themeButton-text: white;
+  --searchBox-bg: beige;
+  --searchBox-text: black;
+  --listBackgroundColor: white;
+  --listTextColor: rgb(80, 80, 80);
+  --listBorderColor: darkgrey;
   --buttonSearch-bg: blue;
   --buttonSearch-text: white;
-  --bodyBackgroundColor: gray;
+  --googleButton-bg: rgb(79, 120, 231);
+  --googleButton-text: white;
+  --saveButton-bg: rgb(2, 212, 2);
+  --saveButton-text: black;
+  --deleteButton-bg: red;
+  --deleteButton-text: black;
 
 }
 
 #themeSelector.themeB {
   --textColor: white;
   --bgColor: darkblue;
+  --bodyBackgroundColor: rgb(43, 42, 42);
+  --navButton-bg: rgb(0, 68, 255);
+  --navButton-text: white;
+  --themeButton-bg: white;
+  --themeButton-text: black;
+  --searchBox-bg: black;
+  --searchBox-text: white;
+  --listBackgroundColor: black;
+  --listTextColor: white;
+  --listBorderColor: rgb(219, 219, 219);
   --buttonSearch-bg: lightblue;
   --buttonSearch-text: black;
-  --bodyBackgroundColor: gray;
+  --googleButton-bg: rgb(79, 120, 231);
+  --googleButton-text: white;
+  --saveButton-bg: rgb(2, 212, 2);
+  --saveButton-text: black;
+  --deleteButton-bg: rgb(255, 115, 0);
+  --deleteButton-text: black;
 
 }
 
@@ -24,10 +55,24 @@
   background-color: var(--bodyBackgroundColor);
 }
 /* if we want to make background color part of the theme, then cannot attach it at a
-   point above where the file was imported */
+   point in the DOM above where the file was imported */
 
 
-/* global button definitions */
+/* global button definition. Add local color styling to create new button */
+
+/* features
+  - flat
+  - rounded corners
+  - removes css button default styling (focus in particular)
+  - small cap font (doesn't convert to upper case)
+  - hover: grows, adds drop shadow, gets brighter
+  - click: ripple animation. White oval gradient created (using ::after), larger than button so not
+    normally visible. On click, goes to normal size, then slowly grows again, which creates ripple effect
+  - disabled: removes hover, active(click) features
+    custom button must add any style changes due to disabled (e.g. greying out) .<my name>:disabled {}
+  - can add a ::before in the customization. The search button uses this to show a text instead of button
+    when the button is disabled
+*/
 
 .buttonGlobal {
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -100,7 +145,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-h1,h2,h3,h4.h5.h6 {
+/* different font for headers, serif */
+h1,h2,h3,h4,h5,h6 {
   font-family: -apple-system, BlinkMacSystemFont, 'Lora', serif;
 
 }

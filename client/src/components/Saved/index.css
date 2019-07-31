@@ -1,0 +1,11 @@
+
+.SavedTitleBox {
+  background-color: var(--listBackgroundColor);
+  color: var(--listTextColor);
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 10px;
+  border-color: var(--listBorderColor);
+  padding: 1rem;
+  margin-top: 0.75rem;
+}

@@ -21,23 +21,28 @@ class ListItem extends React.Component {
         <div className="col-12 col-md-9">
           <div className="row">
             <div className="col-9">
-              <h4 className="ListItemTitle ml-0">{this.props.bookData.title}</h4>
+              <div className="row">
+                <h3 className="ListItemTitle ml-0 mt-1">{this.props.bookData.title}</h3>
+              </div>
             </div>
             <div className="col-3">
-              {this.props.button === "save"  ? (
-                <button className="buttonGlobal ListItemSaveButton" onClick={this.handleButtonClick}>Save</button>
-              ) : (
-                <button className="buttonGlobal ListItemDeleteButton" onClick={this.handleButtonClick}>Delete</button>
-              )}
-              <a href={this.props.bookData.link}>
-                <button className="buttonGlobal ListItemGoogleButton" >Google</button>
-              </a>
+              <div className="btn-group-vertical">
+                {this.props.button === "save" ? (
+                  <button className="buttonGlobal ListItemSaveButton" onClick={this.handleButtonClick}>Save</button>
+                ) : (
+                    <button className="buttonGlobal ListItemDeleteButton" onClick={this.handleButtonClick}>Delete</button>
+                  )}
+                <a href={this.props.bookData.link}>
+                  <button className="buttonGlobal ListItemGoogleButton" >Google</button>
+                </a>
+              </div>
+              
             </div>
           </div>
           
           <div className="row">
-            <p>
-                <span>Author(s)</span>
+            <p className="ListItemAuthors">
+                <span>Author(s)  </span>
                 {this.props.bookData.authors.map( (author, index) => {
                   return (
                     <span key={index}>{author}</span>

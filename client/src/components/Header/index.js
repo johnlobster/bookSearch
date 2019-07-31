@@ -43,8 +43,10 @@ class Header extends React.Component {
             <img src={reactLogo} className="HeaderReactLogo" alt="React logo" />
           </span>
         </h1>
-        <button className="btn btn-danger" onClick={this.clickHandler} >Change theme</button>
-        <Nav change={this.props.changeMode} />
+        <Nav 
+          change={this.props.changeMode}
+          themeHandler={this.clickHandler}
+        />
       </div>
     );
   }

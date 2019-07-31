@@ -1,0 +1,16 @@
+/* seems to be required by create-react-app
+  overall styles are in global.css
+  */
+
+  /* couple of styles put at top level - should fill viewport with the background color
+    can't use css variable because they are only attached at #root by React
+  */
+
+  html, body {
+    background-color: grey;
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+    width: 100%;
+  }
+  

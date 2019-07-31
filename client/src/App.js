@@ -7,11 +7,12 @@ import Saved from "./components/Saved";
 import "./styles/global.css"
 import "./App.css";
 
-// theme is setup by setting class on the enclosing div named themeSelector
+// theme is setup by setting class on the enclosing div named #themeSelector
 // change the class to whatever theme you want, themes defined in "./styles/global.css"
 
 class App extends React.Component {
 
+  // userMode selects which page - either search or saved
   state = {
     userMode: "search"
   }

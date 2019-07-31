@@ -1,6 +1,24 @@
 
-.NavbarBox {
-  margin-top: 3rem;
+.NavBox {
+  margin-top: 0;
+  padding-bottom: 0.8rem;
   color: var(--textColor);
   background-color: var( --bgColor);
+}
+
+.NavButtonBox {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+.NavButton {
+  color: var(--navButton-text);
+  background-color: var(--navButton-bg);
+  margin-left: 1rem;
+}
+
+.NavThemeButton {
+  background-color: var(--themeButton-bg);
+  color: var(--themeButton-text);
+  margin-right: 1em;
 }

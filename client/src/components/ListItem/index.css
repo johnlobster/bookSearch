@@ -1,9 +1,11 @@
 
 .ListItemParentRow {
+  background-color: var(--listBackgroundColor);
+  color: var(--listTextColor);
   border-style: solid;
   border-width: 4px;
   border-radius: 10px;
-  border-color: darkgrey;
+  border-color: var(--listBorderColor);
   padding: 1rem;
   margin-top: 0.5rem;
 
@@ -14,22 +16,31 @@
 .ListItemImg {
   width: 90%;
 }
+.ListItemAuthors {
+  font-size: 125%;
+}
 
+/* set button colors, rest is handled by .buttonGlobal
+  using width:100%. Parent div is a flexbox, so this allows all buttons to be the same size (i.e. the size of
+  the button with most text */
 .ListItemSaveButton {
-  background-color: rgb(2, 212, 2);
-  color:black;
-  margin-bottom: 0.25rem;
+  background-color: var(--saveButton-bg);
+  color:var(--saveButton-text);
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
 .ListItemGoogleButton {
-  background-color: rgb(79, 120, 231);
-  color:white; 
-}
-.ListItemDeleteButton {
-  background-color: red;
-  color: black;
-  margin-bottom: 0.25rem;
+  background-color: var(--googleButton-bg);
+  color:var(--googleButton-text); 
+  width: 100%;
 
 }
-.ListItemDescription {
-  /* color: green; */
+.ListItemDeleteButton {
+  background-color:var(--deleteButton-bg);
+  color: var(--deleteButton-text);
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
+/* .ListItemDescription {
+  color: green;
+} */

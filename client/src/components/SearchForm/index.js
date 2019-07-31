@@ -48,7 +48,7 @@ class SearchForm extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className="SearchFormBox">
         <h1 className="SearchFormTitle">Search form</h1>
         <div className="container">
           <div className="row">

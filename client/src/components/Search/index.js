@@ -47,6 +47,11 @@ class Search extends React.Component {
       <div>
         <SearchForm handleSubmit={this.handleFormSubmit} />
         <div className="container">
+            {this.state.books.length === 0 || 
+              <div className="row SearchTitleBox">
+                <h1>Books from Google search</h1>
+              </div>
+            }
           {/* Only render books list if there are books present */}
           {this.state.books.length > 0 && 
             this.state.books.map((book, index) => {

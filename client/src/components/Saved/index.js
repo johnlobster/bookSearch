@@ -33,7 +33,13 @@ class Saved extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Saved</h1>
+        <div className="row SavedTitleBox">
+          {this.state.books.length === 0 ? (
+            <h1>No books saved to reading list</h1>
+          ): (
+            <h1>Reading list</h1>
+          )}
+        </div>
         {/* Only render books list if there are books present */}
         {this.state.books.length > 0 &&
           this.state.books.map((book, index) => {

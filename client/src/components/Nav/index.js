@@ -9,11 +9,19 @@ class Nav extends React.Component {
   
   render() {
     return (
-      <div>
-        <button onClick={this.changeViewMode} className="btn btn-primary" data-button="search">Search new books</button>
-        <button onClick={this.changeViewMode} className="btn btn-secondary" data-button="saved">Saved books</button>
-
-      </div>
+        <div className="NavBox">
+          <div className="NavButtonBox">
+            <span>
+              <button onClick={this.changeViewMode} className="buttonGlobal NavButton" 
+                data-button="search">Search new books</button>
+              <button onClick={this.changeViewMode} className="buttonGlobal NavButton" 
+                data-button="saved">Saved books</button>
+            </span>
+            <span>
+              <button className="buttonGlobal NavThemeButton" onClick={this.props.themeHandler} >Change theme</button>
+            </span>
+          </div>
+        </div>
     );
   }
 }
