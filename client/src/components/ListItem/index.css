@@ -24,6 +24,8 @@
 .ListItemDeleteButton {
   background-color: red;
   color: black;
+  margin-bottom: 0.25rem;
+
 }
 .ListItemDescription {
   /* color: green; */

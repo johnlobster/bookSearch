@@ -2,24 +2,7 @@ import React from 'react';
 import "./index.css";
 import SearchForm from "../SearchForm";
 import ListItem from "../ListItem";
-
-const sampleBooks = [
-  
-  {
-  authors: ["Suzanne Collins"],
-  description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-  image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-  link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-  title: "The Hunger Games"
-  },
-  {
-    authors: ["Me"],
-    description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-    image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-    link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-    title: "Not the Hunger Games"
-  }
-];
+import googleAPI from "../../api/google.js";
 
 class Search extends React.Component {
 
@@ -28,13 +11,19 @@ class Search extends React.Component {
   }
 
   handleFormSubmit = (title, author) => {
-    this.setState( { books: sampleBooks});
-    console.log("Search for Title "+ title + " Author " + author);
+    googleAPI.searchGoogleBooks(title, author)
+      .then( (googleBooks) => {
+        this.setState({ books: googleBooks });
+        console.log("Search: Search for Title " + title + " Author " + author);
+        console.log(googleBooks);
+      })
+    
   }
 
   handleBookSave = (bookId) => {
     console.log("Save book " + bookId);
   }
+  
 
   render() {
     return (
@@ -47,8 +36,9 @@ class Search extends React.Component {
               return (
                 <ListItem
                   bookData={book}
-                  handleSave={this.handleBookSave}
+                  handleButton={this.handleBookSave}
                   key={index}
+                  button="save"
                 />
               );
               })

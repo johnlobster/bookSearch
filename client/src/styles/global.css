@@ -60,8 +60,11 @@
   transform-origin: center;
   mix-blend-mode: multiply;
 }
-
-
+/* darken background color to a little darker what it was, good contrast for ripple */
+.buttonGlobal:hover:active {
+    filter: brightness(95%);
+    transition: filter 0s;
+}
 /* sets the ripple up */
 .buttonGlobal:active::after {
   transform: scale(0,0);

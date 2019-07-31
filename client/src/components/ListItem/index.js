@@ -5,10 +5,11 @@ import "./index.css";
 // book description
 // This is simpler than a table would be and allows for responsive design
 
+// passes in button="search" or delete, according to list type
 class ListItem extends React.Component {
 
   handleSaveButton = () => {
-    this.props.handleSave("bookId");
+    this.props.handleButton("bookId");
   }
 
   render() {
@@ -23,7 +24,11 @@ class ListItem extends React.Component {
               {this.props.bookData.title}
             </div>
             <div className="col-3">
-              <button className="buttonGlobal ListItemSaveButton" onClick={this.handleSaveButton}>Save</button>
+              {this.props.button === "save"  ? (
+                <button className="buttonGlobal ListItemSaveButton" onClick={this.handleButtonClick}>Save</button>
+              ) : (
+                <button className="buttonGlobal ListItemDeleteButton" onClick={this.handleButtonClick}>Delete</button>
+              )}
               <a href={this.props.bookData.link}>
                 <button className="buttonGlobal ListItemGoogleButton" >Google</button>
               </a>

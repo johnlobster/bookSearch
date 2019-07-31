@@ -1,0 +1,11 @@
+
+.SearchFormTitle {
+  color: var(--textColor);
+  background-color: var(--bgColor);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.SearchFormButton {
+  background-color:var(--buttonSearch-bg);
+  color: var(--buttonSearch-text);
+}
