@@ -3,6 +3,7 @@ import "./index.css";
 import SearchForm from "../SearchForm";
 import ListItem from "../ListItem";
 import googleAPI from "../../api/google.js";
+import serverAPI from "../../api/server.js";
 
 class Search extends React.Component {
 
@@ -15,13 +16,29 @@ class Search extends React.Component {
       .then( (googleBooks) => {
         this.setState({ books: googleBooks });
         console.log("Search: Search for Title " + title + " Author " + author);
-        console.log(googleBooks);
       })
+      .catch((err)=> {
+        console.log("Search: error from accessing google API searchGoogleBooks");
+      });
     
   }
 
+  // bookId is the array index, don't have mongodb id because hasn't been saved yet
   handleBookSave = (bookId) => {
     console.log("Save book " + bookId);
+    serverAPI.saveOneBook(this.state.books[bookId])
+      .then( () => {
+        // remove entry from books array
+        let newBooksList = this.state.books
+        .slice(0,bookId)
+        .concat(this.state.books
+          .slice((bookId+1)));
+        this.setState( { books: newBooksList});
+        console.log(newBooksList);
+      })
+      .catch( (err) => {
+        console("Search: error deleting a book (handleBookSave)");
+      });
   }
   
 
@@ -39,6 +56,7 @@ class Search extends React.Component {
                   handleButton={this.handleBookSave}
                   key={index}
                   button="save"
+                  bookId={index}
                 />
               );
               })

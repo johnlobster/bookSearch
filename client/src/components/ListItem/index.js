@@ -8,8 +8,8 @@ import "./index.css";
 // passes in button="search" or delete, according to list type
 class ListItem extends React.Component {
 
-  handleSaveButton = () => {
-    this.props.handleButton("bookId");
+  handleButtonClick = () => {
+    this.props.handleButton(this.props.bookId);
   }
 
   render() {

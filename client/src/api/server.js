@@ -26,9 +26,13 @@ export default {
 
   },
   deleteOneBook(bookId) {
-
+    return new Promise( (resolve, reject) => {
+      resolve(sampleBooks);
+    });
   },
   saveOneBook(book) {
-
+    return new Promise((resolve, reject) => {
+      resolve();
+    });
   }
 }

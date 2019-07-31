@@ -10,17 +10,25 @@ class Saved extends React.Component {
   }
 
   componentDidMount() {
-    serverAPI.getAllBooks(). 
-      then( (allBooks) => {
+    serverAPI.getAllBooks() 
+      .then( (allBooks) => {
         this.setState( {books: allBooks});
       })
       .catch( (err) => {
-        console.log("Error in Saved, calling API.getAllBooks");
+        console.log("Error in Saved:, calling API.getAllBooks");
       })
   }
 
   handleBookDelete = (bookId) => {
     console.log("Delete book " + bookId);
+    serverAPI.deleteOneBook(bookId)
+      .then( (newBookList) => {
+        console.log("Search: removed book " + bookId);
+        this.setState( { books: newBookList});
+      })
+      .catch ( (err) => {
+        console.log("Saved: error in deleteOneBook");
+      });
   }
   render() {
     return (
@@ -35,6 +43,7 @@ class Saved extends React.Component {
                 handleButton={this.handleBookDelete}
                 key={index}
                 button="delete"
+                bookId={book._id}
               />
             );
           })
