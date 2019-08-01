@@ -20,10 +20,21 @@ const sampleBooks = [
 
 export default {
   getAllBooks: ()  => {
-      return new Promise( (resolve, reject) => {
-        resolve(sampleBooks);
+    return new Promise( (resolve, reject) => {
+      console.log("getAllBooks");
+      $.ajax({
+        url: `/api`,
+        method: "GET"
+      })
+      .done(function (body) {
+        console.log(body);
+        resolve(body);
+      })
+      .fail((xhr) => {
+        console.log("AJAX GET failed with error code " + xhr.status);
+        reject();
       });
-
+    });
   },
   deleteOneBook(bookId) {
     return new Promise( (resolve, reject) => {
@@ -32,7 +43,29 @@ export default {
   },
   saveOneBook(book) {
     return new Promise((resolve, reject) => {
-      resolve();
+      console.log("saveOneBook");
+      console.log(book);
+      $.ajax({
+        url: `/api`,
+        method: "POST",
+        data: JSON.stringify(book),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+      })
+        .done(function (body, textStatus, xhdr) {
+          if (body.postSuccessful) {
+            console.log("Posted successfully");
+            resolve();
+          } else {
+            console.log("Could not save in database  http error ", xhr.status);
+            reject();
+          }
+          
+        })
+        .fail((xhr) => {
+          console.log("AJAX POST failed with error code " + xhr.status);
+          reject();
+        });
     });
   }
 }
