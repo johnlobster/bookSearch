@@ -2,9 +2,11 @@ const db = require("../models");
 
 module.exports = {
   findAll: function (req, res) {
+    // console.log("controller/books/findAll function");
+
     db.Book
       .find()
-      .sort({ createdDate: -1 })
+      // .sort({ createdDate: -1 })
       .then( (dbModel) => {
         console.log( `controller/books/findAll returned ${dbModel.length} records`);
         res.json(dbModel);
@@ -15,34 +17,45 @@ module.exports = {
       })
   },
   save: function (req, res) {
+    // console.log("controller/books/save function");
     let newBook = req.body;
-    let now = new Date();
-    newBook.createdDate = now;
-    db.Book.create(newBook, (err, savedBook) => {
-      console.log(savedBook)
-      if( err ) {
-        console.log("controller/books/save error during db access");
+    newBook.createdDate = new Date();
+    db.Book.create(newBook )
+      .then((savedBook) => {
+        if (savedBook === {}) {
+          // no db error but not saved
+          console.log("controller/books/save failed to save");
+          res.status(422).json({ postSuccessful: false});
+        }
+        else {
+          res.status(201).json({ postSuccessful: true, newBookId : savedBook._id });
+        }
+      })
+      .catch( ( err ) => {
+        console.log("controller/books/save error during db access" + err);
         res.status(422).json(err);
-      }
-      else if (savedBook.length === 0) {
-        // no db error but not saved
-        console.log("controller/books/save failed to save");
-        res.status(422).json(savedBook);
-      }
-      else {
-        res.status(201).json({ postSuccessful: true});
-      }
-    })
+      })
   },
   delete: function (req, res) {
-    db.Book.deleteOne({ _id: req.body.deleteId }, (err) => { 
-      if (err) {
-        console.log("controller/books/save failed to delete id " + req.body.deletedId);
-        res.status(422).json(err);
-      }
-      else {
-        res.json("deleteSuccessful: true");
-      }
-    });
+    // console.log("controller/books/delete function");
+    db.Book.deleteOne({ _id: req.body.deleteId })
+      .then( (result) => {
+        if (result.deletedCount !== 0) {
+          res.json({ deleteSuccessful: true });          
+        }
+        else {
+          console.log("controller/books/save failed to delete id " + req.body.deleteId);
+          res.status(422).json({
+            deleteSuccessful: false,
+          });
+        }})
+      .catch( (err) => {
+        console.log("Error occurred deleting (possible invalid id) item _id=" + req.body.deleteId);
+        console.log(err.message);
+        res.status(422).json({
+          deleteSuccessful: false,
+          error: err
+        });
+      });
   }
 }

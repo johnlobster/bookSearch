@@ -1,5 +1,5 @@
 // Exporting an object containing models
 
 module.exports = {
-  User: require("./Book")
+  Book: require("./book")
 };

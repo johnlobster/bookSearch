@@ -1,6 +1,7 @@
 // test CRD routes for book database
 // creates a new item, then deletes it
 
+const mongoose = require("mongoose");
 const chai = require("chai");
 const chaiHttp = require('chai-http');
 const expect = require("chai").expect;
@@ -25,58 +26,111 @@ const sampleBooks = [
     }
 ];
 
-var app = require("../server");
+let { server, db } = require("../server");
+// connect directly to db so can remove all items (mostly an issue with failing tests)
+mongoose.connect("mongodb://localhost/booksearch_test", { useNewUrlParser: true })
+    .then(() => {
+        console.log("Connected to mongoose/mongodb database");
+        return db.Book.bulkWrite([{ deleteMany: { filter: {} } }]); // returns promise
+    })
+    .catch(err => {
+        console.log("Problem connecting to mongodb");
+        throw new Error(err);
+    });
 
 describe("t1_bookCRUD\n", () => {
     it("Server should start", (done) => {
         // wait for server to start before doing anything
         setTimeout(() => {
-            // app should have lots of data in it, just check that it isn't still a blank object
-            expect(typeof (app.settings)).to.equal("object");
+            // server should have lots of data in it, just check that it isn't still a blank object
+            expect(typeof (server.settings)).to.equal("object");
             done();
         }, 1500);
     });
 });
+
 describe("CRD using /api route", () => {
-    it("Create new book" + notWritten, (done) => {
-        chai.request(app)
+    it("Read all books - should be empty", (done) => {
+        chai.request(server)
+        .get(`/api`)
+        .end( function (err, res)  {
+            if (err) {
+                console.log("Error in get test");
+                console.log(err);
+                throw err;
+            }
+            // console.log("chai-http server return");
+            expect(res.status).to.equal(200,"http response code");
+            expect(res.body.length).to.equal(0);
+            done();
+        });
+    });
+    it("Create new book", (done) => {
+        chai.request(server)
             .post(`/api`)
             .type('form')
             .send(
-                JSON.stringify(sampleBooks[0])
+                sampleBooks[0]
                 )
             .end((err, res) => {
                 if (err) throw err;
-                // fs.writeFileSync("temp3", JSON.stringify(res));
-                const body = JSON.parse(res.body);
+                // books controller sends object with postSuccessful key
                 expect(res.status).to.equal(201, "http response code");
-                expect(body.length).to.equal(1);
-                savedBookId = body._id;
-                console.log("Create book");
-                console.log(savedBookId);
+                expect(res.body.postSuccessful).to.equal(true);
+                savedBookId = res.body.newBookId;
                 done();
             });
     });
-    it("Read all books", (done) => {
-        chai.request(app)
+    it("Read all books - expect one", (done) => {
+        chai.request(server)
         .get(`/api`)
-        .end((err, res) => {
-            if (err) throw err;
-            const body = JSON.parse(res.body);
+        .end( function (err, res)  {
+            if (err) {
+                console.log("Error in get test");
+                console.log(err);
+                throw err;
+            }
             expect(res.status).to.equal(200,"http response code");
-            expect(body.length).to.equal(1);
+            expect(res.body.length).to.equal(1);
             done();
         });
     });
     it("Delete a book", (done) => {
-        chai.request(app)
+        chai.request(server)
             .delete(`/api`)
-            .send(JSON.stringify({deleteId: savedBookId}))
+            .send({deleteId: savedBookId})
             .end((err, res) => {
                 if (err) throw err;
-                const body = JSON.parse(res.body);
                 expect(res.status).to.equal(200, "http response code");
-                expect(body.length).to.equal(1);
+                expect(res.body.deleteSuccessful).to.equal(true);
+                done();
+            });
+    });
+    it("Delete a book with wrong id", (done) => {
+        // note, mongoose throws an error if the deleteId isn't
+        // a valid mongodb Object Id
+        // copied this value from a log file
+        chai.request(server)
+            .delete(`/api`)
+            .send({ deleteId: "5d43569659b76f522498b786" })
+            .end((err, res) => {
+                if (err) throw err;
+                expect(res.status).to.equal(422, "http response code");
+                expect(res.body.deleteSuccessful).to.equal(false);
+                done();
+            });
+    });
+    it("End test: read all books - should be empty", (done) => {
+        chai.request(server)
+            .get(`/api`)
+            .end(function (err, res) {
+                if (err) {
+                    console.log("Error in get test");
+                    console.log(err);
+                    throw err;
+                }
+                expect(res.status).to.equal(200, "http response code");
+                expect(res.body.length).to.equal(0);
                 done();
             });
     });

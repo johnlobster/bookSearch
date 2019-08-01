@@ -6,7 +6,7 @@ const bookController = require("../controller/books.js");
 // controller/books accesses database and returns request
 
 router
-  .route("/api")
+  .route("/")
   .get(bookController.findAll)
   .post(bookController.save)
   .delete(bookController.delete);
