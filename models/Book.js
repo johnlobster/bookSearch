@@ -10,7 +10,8 @@ const UserSchema = new Schema({
   description: String,
   image: String,
   link: String,
-  title: String
+  title: String,
+  createdDate: Date
 });
 
 // This creates our model from the above schema, using mongoose's model method

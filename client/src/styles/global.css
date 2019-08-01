@@ -4,9 +4,9 @@
 
 #themeSelector.themeA {
   --textColor: black;
-  --bgColor: lightgreen;
+  --bgColor: #56bd20;
   --bodyBackgroundColor: gray;
-  --navButton-bg: darkblue;
+  --navButton-bg: #044d04;
   --navButton-text: white;
   --themeButton-bg: black;
   --themeButton-text: white;
