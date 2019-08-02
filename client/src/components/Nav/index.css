@@ -17,6 +17,18 @@
   margin-left: 1rem;
 }
 
+.NavHelpModalOpenButton {
+  background-color: var(--helpButton-bg);
+  color: var(--helpButton-text);
+  margin-right: 1em;
+}
+
+.NavHelpModalCloseButton {
+  background-color: var(--helpCloseButton-bg);
+  color: var(--helpCloseButton-text);
+  margin-right: 1em;
+}
+
 .NavThemeButton {
   background-color: var(--themeButton-bg);
   color: var(--themeButton-text);

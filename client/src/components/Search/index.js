@@ -12,10 +12,29 @@ class Search extends React.Component {
   }
 
   handleFormSubmit = (title, author) => {
+    console.log("Search: search for author=" + author + " title=" + title);
     googleAPI.searchGoogleBooks(title, author)
       .then( (googleBooks) => {
-        this.setState({ books: googleBooks });
-        console.log("Search: Search for Title " + title + " Author " + author);
+        // object from google books is more complicated than we need so pick out only a
+        // few fields
+        // "googleBox" is the array from the items field in the google returned object
+        console.log("Search: returned " + googleBooks.length + " items");
+        let foundBooks = googleBooks.map( (bookDetails) => {
+          // array contains multiple authors, have to copy array
+          let authors = bookDetails.volumeInfo.authors.map( (author) => author);
+          console.log(authors);
+          return {
+            authors: authors,
+            image : bookDetails.volumeInfo.imageLinks.thumbnail,
+            link: bookDetails.volumeInfo.infoLink,
+            title: bookDetails.volumeInfo.title
+          }
+        });
+        console.log("Search: mapped google books keys to app keys");
+        console.log(foundBooks[0]);
+        console.log(foundBooks[4]);
+        this.setState({ books: foundBooks });
+        console.log("Search: returned " +  googleBooks.length + " for Title " + title + " Author " + author);
       })
       .catch((err)=> {
         console.log("Search: error from accessing google API searchGoogleBooks");

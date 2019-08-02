@@ -10,6 +10,10 @@
   --navButton-text: white;
   --themeButton-bg: black;
   --themeButton-text: white;
+  --helpButton-bg: #044d04;
+  --helpButton-text: white;
+  --helpCloseButton-bg: grey;
+  --helpCloseButton-text: white;
   --searchBox-bg: beige;
   --searchBox-text: black;
   --listBackgroundColor: white;
@@ -32,6 +36,10 @@
   --bodyBackgroundColor: rgb(43, 42, 42);
   --navButton-bg: rgb(0, 68, 255);
   --navButton-text: white;
+  --helpButton-bg: rgb(0, 68, 255);
+  --helpButton-text: white;
+  --helpCloseButton-bg: grey;
+  --helpCloseButton-text: white;
   --themeButton-bg: white;
   --themeButton-text: black;
   --searchBox-bg: black;
