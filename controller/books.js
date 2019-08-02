@@ -17,9 +17,14 @@ module.exports = {
       })
   },
   save: function (req, res) {
-    // console.log("controller/books/save function");
+    console.log("controller/books/save function");
     let newBook = req.body;
     newBook.createdDate = new Date();
+    if (newBook._id) {
+      // weird error - sample data had _id field and mongoose crashed
+      newBook._id = null;
+    }
+    // console.log(newBook);
     db.Book.create(newBook )
       .then((savedBook) => {
         if (savedBook === {}) {
@@ -28,11 +33,12 @@ module.exports = {
           res.status(422).json({ postSuccessful: false});
         }
         else {
+          console.log("Save book success, returning 201");
           res.status(201).json({ postSuccessful: true, newBookId : savedBook._id });
         }
       })
       .catch( ( err ) => {
-        console.log("controller/books/save error during db access" + err);
+        console.log("controller/books/save error during db access " + err);
         res.status(422).json(err);
       })
   },

@@ -25,7 +25,7 @@ class Search extends React.Component {
 
   // bookId is the array index, don't have mongodb id because hasn't been saved yet
   handleBookSave = (bookId) => {
-    console.log("Save book " + bookId);
+    // console.log("Save book " + bookId);
     serverAPI.saveOneBook(this.state.books[bookId])
       .then( () => {
         // remove entry from books array
@@ -34,10 +34,10 @@ class Search extends React.Component {
         .concat(this.state.books
           .slice((bookId+1)));
         this.setState( { books: newBooksList});
-        console.log(newBooksList);
       })
       .catch( (err) => {
-        console("Search: error deleting a book (handleBookSave)");
+        console.log("Search: error saving a book (handleBookSave)");
+        console.log(err);
       });
   }
   

@@ -1,4 +1,5 @@
 // API to access the bookSearch server (mongodb)
+import axios from "axios";
 
 const sampleBooks = [
 
@@ -21,18 +22,32 @@ const sampleBooks = [
 export default {
   getAllBooks: ()  => {
     return new Promise( (resolve, reject) => {
-      console.log("getAllBooks");
-      $.ajax({
-        url: `/api`,
-        method: "GET"
+      // console.log("getAllBooks");
+      axios.get("/api")
+      .then(function (response) {
+        if (response.data) {
+          console.log("GET returned " + response.data.length + " books");
+          resolve(response.data);
+        }
+        else {
+          // successful request but no data returned
+          // not sure that this can happen
+          console.log("GET failed - request succeeded but no data returned");
+          // return something to print out as an error
+          reject(response.headers);
+        }
       })
-      .done(function (body) {
-        console.log(body);
-        resolve(body);
-      })
-      .fail((xhr) => {
-        console.log("AJAX GET failed with error code " + xhr.status);
-        reject();
+      .catch((error) => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log("GET failed with http error code " + error.response.status);
+        } 
+        else {
+          // The request was made but no response was received
+          console.log("GET timed out, nothing received");
+        }
+        reject(error);
       });
     });
   },
@@ -43,29 +58,30 @@ export default {
   },
   saveOneBook(book) {
     return new Promise((resolve, reject) => {
-      console.log("saveOneBook");
-      console.log(book);
-      $.ajax({
-        url: `/api`,
-        method: "POST",
-        data: JSON.stringify(book),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json"
+      // console.log("saveOneBook");
+      axios.post("/api", book)
+      .then(function (response) {
+        if (response.data.postSuccessful) {
+          console.log("POST success (" + response.status +")");
+          resolve();
+        } else {
+          console.log("POST success but could not save in database: http code ", response.status);
+          reject(response);
+        }
+        
       })
-        .done(function (body, textStatus, xhdr) {
-          if (body.postSuccessful) {
-            console.log("Posted successfully");
-            resolve();
-          } else {
-            console.log("Could not save in database  http error ", xhr.status);
-            reject();
-          }
-          
-        })
-        .fail((xhr) => {
-          console.log("AJAX POST failed with error code " + xhr.status);
-          reject();
-        });
+      .catch((error) => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log("POST failed with error code " + error.response.status);
+        }
+        else {
+          // The request was made but no response was received
+          console.log("POST timed out, nothing received");
+        }
+        reject(error);
+      });
     });
   }
 }

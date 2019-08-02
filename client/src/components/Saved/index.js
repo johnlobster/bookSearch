@@ -16,6 +16,7 @@ class Saved extends React.Component {
       })
       .catch( (err) => {
         console.log("Error in Saved:, calling API.getAllBooks");
+        console.log(err);
       })
   }
 
