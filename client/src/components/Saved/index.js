@@ -21,16 +21,16 @@ class Saved extends React.Component {
   }
 
   handleBookDelete = (bookId) => {
-    console.log("Delete book " + bookId);
+    // console.log("Saved: book id " + bookId);
     serverAPI.deleteOneBook(bookId)
       .then( (newBookList) => {
-        console.log("Search: removed book " + bookId);
-        this.setState( { books: newBookList});
+        this.setState(newBookList);
       })
       .catch ( (err) => {
         console.log("Saved: error in deleteOneBook");
       });
   }
+
   render() {
     return (
       <div className="container">

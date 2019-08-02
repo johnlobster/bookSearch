@@ -43,20 +43,26 @@ module.exports = {
       })
   },
   delete: function (req, res) {
-    // console.log("controller/books/delete function");
+    // console.log("controller/books/delete function, delete id " + req.body.deleteId);
     db.Book.deleteOne({ _id: req.body.deleteId })
       .then( (result) => {
-        if (result.deletedCount !== 0) {
-          res.json({ deleteSuccessful: true });          
+        if (result.deletedCount === 0) {
+          console.log("controller/books/delete failed to delete id " + req.body.deleteId);
+          res.status(422).json({
+            deleteSuccessful: false
+          });
         }
         else {
-          console.log("controller/books/save failed to delete id " + req.body.deleteId);
-          res.status(422).json({
-            deleteSuccessful: false,
-          });
-        }})
+          // deleted book successfully, now return remaining books
+          return db.Book.find()
+        } 
+      })
+      .then((dbModel) => {
+        console.log(`controller/books/delete found ${dbModel.length} records`);
+        res.json({ deleteSuccessful: true, books: dbModel });
+      })
       .catch( (err) => {
-        console.log("Error occurred deleting (possible invalid id) item _id=" + req.body.deleteId);
+        console.log("Error occurred deleting item _id=" + req.body.deleteId);
         console.log(err.message);
         res.status(422).json({
           deleteSuccessful: false,

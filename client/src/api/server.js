@@ -19,6 +19,8 @@ const sampleBooks = [
   }
 ];
 
+// axios notes
+// by default, axios sends data in json format
 export default {
   getAllBooks: ()  => {
     return new Promise( (resolve, reject) => {
@@ -53,6 +55,35 @@ export default {
   },
   deleteOneBook(bookId) {
     return new Promise( (resolve, reject) => {
+      // console.log("deleteOneBook id=" + bookId);
+      axios.delete("/api", {
+        data: {
+          deleteId: bookId
+        }
+      })
+        .then(function (response) {
+          if (response.data.deleteSuccessful) {
+            // console.log("DELETE success (" + response.status + ")");
+            resolve(response.data.books);
+          } else {
+            // console.log("DELETE success but could not save in database: http code ", response.status);
+            reject(response);
+          }
+
+        })
+        .catch((error) => {
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log("DELETE failed with error code " + error.response.status);
+            console.log(error.response.data)
+          }
+          else {
+            // The request was made but no response was received
+            console.log("DELETE timed out, nothing received");
+          }
+          reject(error);
+        });
       resolve(sampleBooks);
     });
   },
@@ -63,7 +94,7 @@ export default {
       .then(function (response) {
         if (response.data.postSuccessful) {
           console.log("POST success (" + response.status +")");
-          resolve();
+          resolve(response.data.books);
         } else {
           console.log("POST success but could not save in database: http code ", response.status);
           reject(response);
