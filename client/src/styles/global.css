@@ -40,8 +40,6 @@ body.themeA {
 
 /* dark theme */
 body.themeB {
-  --textColor: white;
-  --bgColor: darkblue;
   --boxShadowColor : transparent;
   --modalShadowColor : transparent;
   --bodyBackgroundColor: rgb(43, 42, 42);
@@ -74,7 +72,6 @@ body.themeB {
   --modalFooter-text: white;
   --textColor: white;
   --bgColor: darkblue;
-
 }
 
 /* set up background */

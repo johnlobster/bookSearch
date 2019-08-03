@@ -28,7 +28,7 @@ class App extends React.Component {
 
   render() {
     return (
-    <div id="themeSelector" className= "themeA">
+    <div>
       <Header changeMode={this.changeMode} />
       { this.state.userMode === "search" ? (
         <Search />
