@@ -23,19 +23,37 @@
   margin-right: 1em;
 }
 
-.NavHelpModalCloseButton {
-  /* modal doesn't seem to inherit styles from parents. Strange because it does with CDN ..
-    and things like button styles. Might debug this one day ... */
-  /* background-color: var(--helpCloseButton-bg);
-  color: var(--helpCloseButton-text); */
-  background-color: rgb(163, 162, 162);
-  color: black; 
-  margin-right: 1em;
-}
+
 
 
 .NavThemeButton {
   background-color: var(--themeButton-bg);
   color: var(--themeButton-text);
+  margin-right: 1em;
+}
+
+.customModal {
+  border-radius: 15px;
+}
+
+.customModalHeader {
+  background-color: var(--modalHeader-bg);
+  color: var(--modalHeader-text);
+
+}
+
+.customModalBody {
+  background-color: var(--modalBody-bg);
+  color: var(--modalBody-text);
+
+}
+
+.customModalFooter {
+  background-color: var(--modalFooter-bg);
+  color: var(--modalFooter-text);
+}
+.NavHelpModalCloseButton {
+  background-color: var(--helpCloseButton-bg);
+  color: var(--helpCloseButton-text); 
   margin-right: 1em;
 }

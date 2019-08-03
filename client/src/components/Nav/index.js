@@ -29,9 +29,9 @@ class Nav extends React.Component {
             </span>
             <span>
             <button className="buttonGlobal NavHelpModalOpenButton" onClick={this.modalToggle}>Help</button>
-            <Modal isOpen={this.state.modal} toggle={this.modalToggle} className={this.props.className}>
-              <ModalHeader toggle={this.modalToggle}><strong>Book searcher help</strong></ModalHeader>
-              <ModalBody>
+            <Modal isOpen={this.state.modal} toggle={this.modalToggle} className="customModal">
+              <ModalHeader className="customModalHeader" toggle={this.modalToggle}><strong>Book searcher help</strong></ModalHeader>
+              <ModalBody className="customModalBody">
                 <p>
                   This app will let you search for a book on google books. It then displays a list of results, 
                   showing information about the book, including a "Google" button that will take you to the google information
@@ -51,7 +51,7 @@ class Nav extends React.Component {
                   The search button will not appear until has been entered in the Title or Author fields
                 </p>
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter className="customModalFooter">
                 <button className="buttonGlobal NavHelpModalCloseButton" onClick={this.modalToggle}>Cancel</button>
               </ModalFooter>
             </Modal>

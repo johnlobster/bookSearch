@@ -13,8 +13,9 @@ const changeTheme = (newTheme) => {
     return;
   }
   // console.log("Changing to theme " + newTheme);
-  // this is implemented with a single class on #themeSelector. Using className like this overwrites all classes
-  document.getElementById("themeSelector").className=newTheme;
+  // this is implemented with a single class on <body>. Using className in this way overwrites all classes
+  document.getElementsByTagName("BODY")[0].className = newTheme;
+
 };
 
 class Header extends React.Component {

@@ -1,11 +1,10 @@
 /* Theme definitions */
 
 
-
-#themeSelector.themeA {
-  --textColor: black;
-  --bgColor: #56bd20;
+/* light theme */
+body.themeA {
   --boxShadowColor : rgb(156, 156, 156);
+  --modalShadowColor : rgb(59, 57, 57);
   --bodyBackgroundColor: gray;
   --navButton-bg: #044d04;
   --navButton-text: white;
@@ -28,19 +27,29 @@
   --saveButton-text: black;
   --deleteButton-bg: red;
   --deleteButton-text: black;
-
+  --modalHeader-bg: #56bd20;
+  --modalHeader-text: black;
+  --modalBody-bg: beige;
+  --modalBody-text: black;
+  --modalFooter-bg: #56bd20;
+  --modalFooter-text: black;
+  --textColor: black;
+  --bgColor: #56bd20;
 }
+/* #themeSelector.themeB { */
 
-#themeSelector.themeB {
+/* dark theme */
+body.themeB {
   --textColor: white;
   --bgColor: darkblue;
   --boxShadowColor : transparent;
+  --modalShadowColor : transparent;
   --bodyBackgroundColor: rgb(43, 42, 42);
   --navButton-bg: rgb(0, 68, 255);
   --navButton-text: white;
   --helpButton-bg: rgb(0, 68, 255);
   --helpButton-text: white;
-  --helpCloseButton-bg: grey;
+  --helpCloseButton-bg: rgb(123, 123, 123);
   --helpCloseButton-text: white;
   --themeButton-bg: white;
   --themeButton-text: black;
@@ -49,14 +58,22 @@
   --listBackgroundColor: black;
   --listTextColor: white;
   --listBorderColor: rgb(219, 219, 219);
-  --buttonSearch-bg: lightblue;
+  --buttonSearch-bg: rgba(31, 105, 243, 0.836);
   --buttonSearch-text: black;
-  --googleButton-bg: rgb(79, 120, 231);
+  --googleButton-bg: rgba(79, 120, 231, 0.678);
   --googleButton-text: white;
-  --saveButton-bg: rgb(2, 212, 2);
+  --saveButton-bg: rgba(2, 212, 2, 0.712);
   --saveButton-text: black;
-  --deleteButton-bg: rgb(255, 115, 0);
+  --deleteButton-bg: rgba(255, 115, 0, 0.705);
   --deleteButton-text: black;
+  --modalHeader-bg: darkblue;
+  --modalHeader-text: white;
+  --modalBody-bg: rgb(123, 123, 123);
+  --modalBody-text: rgb(235, 235, 235);
+  --modalFooter-bg: darkblue;
+  --modalFooter-text: white;
+  --textColor: white;
+  --bgColor: darkblue;
 
 }
 
