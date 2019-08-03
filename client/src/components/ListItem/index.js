@@ -45,7 +45,7 @@ class ListItem extends React.Component {
                 <span>Author(s)  </span>
                 {this.props.bookData.authors.map( (author, index) => {
                   return (
-                    <span key={index}>{author}</span>
+                    <span key={index}>{author} </span>
                   )
                 })}
             </p>

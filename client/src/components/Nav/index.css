@@ -24,10 +24,15 @@
 }
 
 .NavHelpModalCloseButton {
-  background-color: var(--helpCloseButton-bg);
-  color: var(--helpCloseButton-text);
+  /* modal doesn't seem to inherit styles from parents. Strange because it does with CDN ..
+    and things like button styles. Might debug this one day ... */
+  /* background-color: var(--helpCloseButton-bg);
+  color: var(--helpCloseButton-text); */
+  background-color: rgb(163, 162, 162);
+  color: black; 
   margin-right: 1em;
 }
+
 
 .NavThemeButton {
   background-color: var(--themeButton-bg);

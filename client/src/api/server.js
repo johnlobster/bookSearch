@@ -28,7 +28,7 @@ export default {
       axios.get("/api")
       .then(function (response) {
         if (response.data) {
-          console.log("GET returned " + response.data.length + " books");
+          // console.log("GET returned " + response.data.length + " books");
           resolve(response.data);
         }
         else {
@@ -92,7 +92,7 @@ export default {
       axios.post("/api", book)
       .then(function (response) {
         if (response.data.postSuccessful) {
-          console.log("POST success (" + response.status +")");
+          // console.log("POST success (" + response.status +")");
           resolve(response.data.books);
         } else {
           console.log("POST success but could not save in database: http code ", response.status);

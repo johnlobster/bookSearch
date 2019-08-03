@@ -40,7 +40,7 @@ class SearchForm extends React.Component {
     }
     else {
       this.props.handleSubmit(this.state.title, this.state.author);
-      console.log("SearchForm: submit: title " + this.state.title + " author " + this.state.author);
+      // console.log("SearchForm: submit: title " + this.state.title + " author " + this.state.author);
       this.setState({ title: "", author: "", searchDisable: true });
 
     }

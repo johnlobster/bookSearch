@@ -5,6 +5,7 @@
 #themeSelector.themeA {
   --textColor: black;
   --bgColor: #56bd20;
+  --boxShadowColor : rgb(156, 156, 156);
   --bodyBackgroundColor: gray;
   --navButton-bg: #044d04;
   --navButton-text: white;
@@ -33,6 +34,7 @@
 #themeSelector.themeB {
   --textColor: white;
   --bgColor: darkblue;
+  --boxShadowColor : transparent;
   --bodyBackgroundColor: rgb(43, 42, 42);
   --navButton-bg: rgb(0, 68, 255);
   --navButton-text: white;

@@ -1,4 +1,8 @@
 
+.HeaderSurroundingBox {
+  position: relative; /* has to be explicitly included or z-index will not be applied */
+  box-shadow: 0 0.3rem 6px var(--boxShadowColor);
+}
 .HeaderHeaderBox {
   background-color: var(--bgColor);
   color: var(--textColor);

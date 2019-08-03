@@ -12,8 +12,8 @@ const changeTheme = (newTheme) => {
     console.log("Tried to change to non-existent theme " + newTheme);
     return;
   }
-  console.log("Changing to theme " + newTheme);
-  // document.getElementById("root").setAttribute("data-theme", newTheme);
+  // console.log("Changing to theme " + newTheme);
+  // this is implemented with a single class on #themeSelector. Using className like this overwrites all classes
   document.getElementById("themeSelector").className=newTheme;
 };
 
@@ -36,7 +36,7 @@ class Header extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="HeaderSurroundingBox">
         <h1 className="HeaderHeaderBox">
           <span>Book searcher</span>
           <span>

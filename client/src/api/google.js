@@ -37,7 +37,7 @@ const GOOGLE_BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 export default {
   searchGoogleBooks: (title, author) => {
     return new Promise( (resolve,reject) => {
-      console.log("searchGoogleBooks author=" + author + " title=" + title);
+      // console.log("searchGoogleBooks author=" + author + " title=" + title);
       let query = "?q=";
       if (title !== "") {
         query += "intitle:" + title.replace(/ /g, "+");
@@ -54,12 +54,11 @@ export default {
           reject();
         }
       }
-      console.log(GOOGLE_BASE_URL + query + "&key=" + GOOGLE_BOOKS_API);
+      // console.log(GOOGLE_BASE_URL + query + "&key=" + GOOGLE_BOOKS_API);
       axios.get(GOOGLE_BASE_URL + query +"&key=" + GOOGLE_BOOKS_API)
         .then(function (response) {
           if (response.data) {
-            console.log(response.data);
-            console.log("searchGoogleBooks: returned " + response.data.items.length + " items");
+            // console.log("searchGoogleBooks: returned " + response.data.items.length + " items");
             resolve(response.data.items);
           }
           else {
