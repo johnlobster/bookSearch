@@ -1,5 +1,7 @@
 const db = require("../models");
 
+// controller acts between api and database
+
 module.exports = {
   findAll: function (req, res) {
     // console.log("controller/books/findAll function");
