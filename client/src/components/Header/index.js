@@ -14,7 +14,7 @@ const changeTheme = (newTheme) => {
   }
   // console.log("Changing to theme " + newTheme);
   // this is implemented with a single class on <body>. Using className in this way overwrites all classes
-  document.getElementsByTagName("BODY")[0].className = newTheme;
+  document.getElementsByTagName("body")[0].className = newTheme;
 
 };
 
