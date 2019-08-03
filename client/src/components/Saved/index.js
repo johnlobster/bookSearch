@@ -24,7 +24,7 @@ class Saved extends React.Component {
     // console.log("Saved: book id " + bookId);
     serverAPI.deleteOneBook(bookId)
       .then( (newBookList) => {
-        this.setState(newBookList);
+        this.setState({books :newBookList});
       })
       .catch ( (err) => {
         console.log("Saved: error in deleteOneBook");
